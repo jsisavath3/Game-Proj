@@ -1,6 +1,6 @@
 #include "MainMenuState.h"
 
-MainMenuState::MainMenuState(sf::RenderWindow* window) : State(window)
+MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* states) : State(window, states)
 {
 	this->initBackground();
 	this->initFont();
@@ -40,6 +40,11 @@ void MainMenuState::initFont()
 	}
 }
 
+void MainMenuState::initGameState()
+{	
+	this->states->push(new GameState(this->window, this->states));
+}
+
 void MainMenuState::endState()
 {
 }
@@ -54,6 +59,10 @@ void MainMenuState::update(const float& dt)
 	if (buttons["quit_button"]->isPressed())
 	{
 		this->end = true;
+	}
+	if (buttons["blackjack_button"]->isPressed())
+	{
+		this->initGameState();
 	}
 }
 

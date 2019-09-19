@@ -5,10 +5,10 @@ void Game::initWindow()
 	this->window = new sf::RenderWindow(sf::VideoMode(800,600), "Casino");
 }
 
-
+ 
 void Game::initStates()
 {
-	this->states.push(new MainMenuState(this->window));
+	this->states.push(new MainMenuState(this->window, &this->states));
 }
 
 Game::Game()

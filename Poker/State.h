@@ -8,6 +8,7 @@
 #include <stack>
 #include <map>
 
+#include "Button.h"
 #include "SFML\System.hpp"
 #include "SFML\Audio.hpp"
 #include "SFML\Graphics.hpp"
@@ -21,6 +22,7 @@ private:
 protected:
 	sf::RenderWindow* window;
 	std::vector<sf::Texture> textures;
+	std::stack<State*>* states;
 	bool end;
 
 	sf::Vector2i mousePosScreen;
@@ -28,7 +30,7 @@ protected:
 	sf::Vector2f mousePosView;
 
 public:
-	State(sf::RenderWindow* window);
+	State(sf::RenderWindow* window, std::stack<State*>* states);
 	virtual ~State();
 
 	void updateMousePosition();
