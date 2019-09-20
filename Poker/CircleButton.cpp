@@ -10,7 +10,9 @@ CircleButton::CircleButton(float x, float y, float radius, sf::Font* font, int f
 	this->shape.setRadius(radius);
 	this->shape.setPosition(sf::Vector2f(x, y));
 	this->shape.setFillColor(this->idleColor);
-	
+	this->shape.setOutlineThickness(2);
+	this->shape.setOutlineColor(sf::Color::White);
+
 	this->font = font;
 	this->text.setFont(*this->font);
 	this->text.setString(text);

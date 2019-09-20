@@ -5,6 +5,8 @@
 class Game
 {
 private:
+	sf::ContextSettings context;
+	sf::Uint32 style;
 	sf::RenderWindow* window;
 	sf::Event sfEvent;
 	sf::Clock dtClock;

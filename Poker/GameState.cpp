@@ -5,10 +5,19 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states) : Sta
 	this->initBackground();
 	this->initFont();
 	this->initButtons();
+	this->initCards();
 }
 
 GameState::~GameState()
 {
+}
+
+void GameState::initCards()
+{
+
+/*	this->card = Card(10, Card::Suit(1));
+	this->playerCardSprite.setTexture(*this->card.getTexture());
+	this->playerCardSprite.setPosition(sf::Vector2f(50, 50));*/
 }
 
 void GameState::initBackground()
@@ -51,4 +60,5 @@ void GameState::render(sf::RenderTarget* target)
 	{
 		in.second->render(target);
 	}
+	target->draw(this->playerCardSprite);
 }

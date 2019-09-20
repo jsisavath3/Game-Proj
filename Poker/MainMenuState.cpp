@@ -21,6 +21,7 @@ void MainMenuState::initBackground()
 	bool check = this->temp.loadFromFile("Sprites/Menu.png");
 	if (!check)
 		EXIT_FAILURE;
+	temp.setSmooth(true);
 	this->background.setTexture(temp);
 	this->background.setColor(sf::Color::Blue);
 }

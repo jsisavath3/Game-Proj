@@ -1,8 +1,14 @@
 #include "Game.h"
 
+
+
+
 void Game::initWindow()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(800,600), "Casino");
+	this->style = 7U;
+	this->context.antialiasingLevel = 8;
+	this->window = new sf::RenderWindow(sf::VideoMode(800,600), "Casino", style , context );
+
 }
 
  
