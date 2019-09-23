@@ -1,8 +1,5 @@
 #include "Game.h"
 
-
-
-
 void Game::initWindow()
 {
 	this->style = 7U;
@@ -11,14 +8,19 @@ void Game::initWindow()
 
 }
 
- 
 void Game::initStates()
 {
-	this->states.push(new MainMenuState(this->window, &this->states));
+	this->states.push(new GameState(this->window, &this->states, this->players));
 }
 
 Game::Game()
 {
+	Player* dealer = new Player("Dealer", 10, false);
+	this->testPlayer.setName("Jake");
+	this->testPlayer.setBalance(10);
+	this->testPlayer.setType(true);
+	this->players.push_back(&this->testPlayer);
+	this->players.push_back(dealer);
 	this->initWindow();
 	this->initStates();
 }
@@ -33,8 +35,6 @@ Game::~Game()
 		this->states.pop();
 	}
 }
-
-
 
 void Game::updateDt()
 {
@@ -90,4 +90,9 @@ void Game::run()
 		this->update(this->dt);
 		this->render();
 	}
+}
+
+int Game::blackjack()
+{
+	return 0;
 }

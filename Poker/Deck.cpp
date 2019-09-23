@@ -7,38 +7,33 @@ Deck::Deck()
 
 void Deck::buildDeck()
 {
-	myDeck.resize(52);
-	myIndex = 0;
 	int number;
-	int num = 0;
 	for (number = 1; number <= SIZE / 4; number++)
 	{
 		for (int suit = 0; suit < 4; suit++)
 		{
-			myDeck[num] = Card(number, Card::Suit(suit));
-			num++;
+			this->myDeck.emplace_back(Card(number, Card::Suit(suit)));
 		}
 	}
 }
 
-void Deck::Shuffle()
+void Deck::shuffle()
 {
-	myIndex = 0; 
 	srand(time(NULL));
 	for (int i = 0; i < 1000; i++)
 	{
 		int swap = rand() % 52;
 		Card c_one = myDeck[swap];
 		Card c_two = myDeck[0];
-		myDeck[swap] = c_two;
-		myDeck[0] = c_one;
+		this->myDeck[swap] = c_two;
+		this->myDeck[0] = c_one;
 	}
 }
 
 Card Deck::getCard()
 {
-	Card c = myDeck[0];
-	myDeck.erase(myDeck.begin());
+	Card c = this->myDeck.front();
+	this->myDeck.erase(myDeck.begin());
 	return c;
 }
 

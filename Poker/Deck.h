@@ -9,7 +9,7 @@ class Deck
 {
 public:
 	Deck();
-	void Shuffle();
+	void shuffle();
 	Card getCard();
 	int  deckSize();
 	void printDeck();

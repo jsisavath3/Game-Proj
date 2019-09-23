@@ -43,7 +43,7 @@ void MainMenuState::initFont()
 
 void MainMenuState::initGameState()
 {	
-	this->states->push(new GameState(this->window, this->states));
+	//this->states->push(new GameState(this->window, this->states));
 }
 
 void MainMenuState::endState()

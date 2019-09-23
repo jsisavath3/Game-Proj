@@ -31,7 +31,9 @@ CircleButton::~CircleButton()
 const bool CircleButton::isPressed() const
 {
 	if (this->buttonState == CBTN_PRESSED)
+	{
 		return true;
+	}
 	else
 		return false;
 }
@@ -49,8 +51,9 @@ void CircleButton::update(sf::Vector2f mousePos)
 	if (this->shape.getGlobalBounds().contains(mousePos))
 	{
 		this->buttonState = CBTN_HOVER;
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		while (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
+			this->shape.setFillColor(this->activeColor);
 			this->buttonState = CBTN_PRESSED;
 		}
 	}
