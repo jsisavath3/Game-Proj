@@ -2,6 +2,11 @@
 
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states, std::vector<Player*> players) : State(window, states)
 {
+	this->tieText.setString("TIE!");
+	this->tieText.setFont(this->font);
+	this->tieText.setCharacterSize(30);
+	this->tieText.setStyle(sf::Text::Bold);
+	this->tieText.setPosition(sf::Vector2f(400, 400));
 	this->loseText.setString("YOU LOSE!");
 	this->loseText.setFont(this->font);
 	this->loseText.setCharacterSize(30);
@@ -97,7 +102,7 @@ void GameState::update(const float& dt)
 			this->players[dealerInd]->addCard(this->deck.getCard());
 		}
 	}
-	if (this->isLose == true || this->isWin == true)
+	if (this->isLose == true || this->isWin == true || this->isTie == true)
 	{
 		this->endGame();
 	}
@@ -150,6 +155,10 @@ void GameState::render(sf::RenderTarget* target)
 	{
 		this->renderWinText(target);
 	}
+	if (isTie)
+	{
+		this->renderTieText(target);
+	}
 }
 
 void GameState::dealCards()
@@ -176,6 +185,10 @@ void GameState::checkGame()
 			this->isLose = true;
 			this->isPlayingDealer = false;
 		}
+		else
+		{
+			this->isTie = true;
+		}
 	}
 	if (this->isPlayingDealer == true && this->players[dealerInd]->getHandValue() > 21)
 	{
@@ -201,4 +214,9 @@ void GameState::renderLoseText(sf::RenderTarget* target)
 void GameState::renderWinText(sf::RenderTarget* target)
 {
 	target->draw(this->winText);
+}
+
+void GameState::renderTieText(sf::RenderTarget* target)
+{
+	target->draw(this->tieText);
 }

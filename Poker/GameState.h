@@ -17,6 +17,7 @@ private:
 	std::map<std::string, CircleButton*> buttons;
 	
 	//Blackjack logic
+	sf::Text tieText;
 	sf::Text loseText;
 	sf::Text winText;
 	std::vector<Player*> players;
@@ -25,6 +26,7 @@ private:
 	Deck deck;
 	bool isWin;
 	bool isLose;
+	bool isTie;
 	bool isPlayingDealer;
 public:
 	GameState(sf::RenderWindow* window, std::stack<State*>* states, std::vector<Player*> players);
@@ -38,6 +40,7 @@ public:
 	void render(sf::RenderTarget* target);
 	void renderLoseText(sf::RenderTarget* target);
 	void renderWinText(sf::RenderTarget* target);
+	void renderTieText(sf::RenderTarget* target);
 	
 	//Blackjack logic
 	void dealCards();
